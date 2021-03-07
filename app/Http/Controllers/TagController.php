@@ -9,12 +9,11 @@ class TagController extends Controller
 {
     //
     public function store(Request $Request){
-        $Tag = $Request->all();
         Tag::create([
-            'title'=>$Tag['title'],
-            'color'=>$Tag['color'],
+            'title'=>$Request->title,
+            'color'=>$Request->color,
+            'user_id'=>$Request->user()->id,
         ]);
-        dd($Tag);
         return response(201);
     }
     public function show(){
