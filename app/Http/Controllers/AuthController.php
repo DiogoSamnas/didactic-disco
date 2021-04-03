@@ -68,4 +68,15 @@ class AuthController extends Controller
             'message' => 'token deleted successfully!'
         ]);
     }
+    public function auth(Request $Request){
+        return response()->json([
+            'auth'=>'true'
+        ]);
+    }
+    public function perfil(Request $Request){
+        return response()->json([
+            'name'=>$Request->user()->name,
+            'email'=>$Request->user()->email
+        ]);
+    }
 }

@@ -16,8 +16,8 @@ class TagController extends Controller
         ]);
         return response(201);
     }
-    public function show(){
-        $Tags = Tag::all();
+    public function show(Request $Request){
+        $Tags = Tag::all()->where('user_id',$Request->user()->id);
         return response()->json($Tags);
     }
     public function destroy($id){

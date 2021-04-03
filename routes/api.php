@@ -30,6 +30,8 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::delete('/note/{id}',[NoteController::class,'destroy']);
 
     Route::post('/logout',[AuthController::class,'logout']);
+    Route::get('/auth',[AuthController::class,'auth']);
+    Route::get('/perfil',[AuthController::class,'perfil']);
 });
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
