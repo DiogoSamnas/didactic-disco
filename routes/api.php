@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
 
     Route::post('/note',[NoteController::class,'store']);
     Route::get('/note',[NoteController::class,'show']);
+    Route::patch('/note/{id}',[NoteController::class,'update']);
     Route::delete('/note/{id}',[NoteController::class,'destroy']);
 
     Route::post('/logout',[AuthController::class,'logout']);

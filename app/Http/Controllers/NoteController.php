@@ -23,6 +23,18 @@ class NoteController extends Controller
             'notes' => array_values($Note)
         ],200);
     }
+    public function update(Request $Request, $id){
+        Note::where('user_id',$Request->user()->id)->where('id',$id)->update([
+            'title'=>$Request->title,
+            'body'=>$Request->body,
+        ]);
+        return response()->json([
+            'id'=>$id,
+            'user_id'=>$Request->user()->id,
+            'New title'=> $Request->title,
+            'New body'=> $Request->body
+        ]);
+    }
     public function destroy($id){
         $DeletedNote = Note::where('id',$id)->delete();
         return response()->json($DeletedNote);
